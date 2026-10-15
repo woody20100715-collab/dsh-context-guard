@@ -139,7 +139,7 @@ test('integration: the compaction transaction follows the durable protocol (star
     const session = Session.create(SessionId('session-integration'));
     session.append('turn/start', { turn: 1 });
     const texts = [
-      '请把服务部署到 C:\\Users\\Administrator\\app，端口 8080，必须使用 pnpm run build:web 构建。',
+      '请把服务部署到 C:\\work\\demo-app，端口 8080，必须使用 pnpm run build:web 构建。',
       '第一条：先检查依赖。',
       '第二条：注意磁盘剩余 3.5 GB。',
       '第三条：日志目录是 /var/log/app。',
@@ -182,7 +182,7 @@ test('integration: the compaction transaction follows the durable protocol (star
     assert.equal(session.surface.nodes.length, 1, 'the whole surface is replaced by one summary');
     const derived = session.deriveMessages().map((message) => plugin!.textOf(message.content)).join('\n');
     assert.ok(derived.includes('8080'), 'precise value: the port must survive');
-    assert.ok(derived.includes('C:\\Users\\Administrator\\app'), 'precise value: the path must survive');
+    assert.ok(derived.includes('C:\\work\\demo-app'), 'precise value: the path must survive');
     assert.ok(derived.includes('pnpm run build:web'), 'precise value: the command must survive');
     assert.ok(derived.includes('3.5 GB'), 'precise value: the number must survive');
     assert.ok(derived.includes('不要修改 version'), 'precise value: the user constraint must survive');

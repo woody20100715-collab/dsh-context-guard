@@ -23,7 +23,7 @@ const sink = new MemorySink();
 const logger = new GuardLogger('debug', sink);
 
 const MESSAGES: SimpleMessage[] = [
-  { role: 'user', text: '请把服务部署到 C:\\Users\\Administrator\\app，端口 8080，必须使用 pnpm run build:web 构建。' },
+  { role: 'user', text: '请把服务部署到 C:\\work\\demo-app，端口 8080，必须使用 pnpm run build:web 构建。' },
   { role: 'assistant', text: '好的，我先检查目录结构。' },
   { role: 'tool', text: 'build ok in 42s', toolName: 'pwsh' },
   { role: 'tool', text: 'connection refused', toolName: 'pwsh', isError: true },
@@ -65,7 +65,7 @@ test('parse: tolerates code fences and surrounding prose, rejects non-JSON', () 
 test('precise: the deterministic pass extracts numbers, paths, commands, constraints', () => {
   const values = extractPreciseValues(MESSAGES.map((message) => message.text).join('\n'));
   assert.ok(values.numbers.includes('8080'));
-  assert.ok(values.paths.some((path) => path.startsWith('C:\\Users\\Administrator\\app')));
+  assert.ok(values.paths.some((path) => path.startsWith('C:\\work\\demo-app')));
   assert.ok(values.commands.some((command) => command.includes('pnpm run build:web')));
   assert.ok(values.constraints.some((constraint) => constraint.includes('必须')));
 });

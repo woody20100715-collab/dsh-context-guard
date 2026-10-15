@@ -142,7 +142,7 @@ test('text: keeps head/tail and extracts high-signal sentences from the middle',
     'Deploy with pnpm run build:web before publishing.',
     'More filler content here to push the budget.',
     'The timeout is 30 seconds and must not be exceeded.',
-    'C:/Users/Administrator/Documents/deepseek-harness/default-workspace/dsh-context-guard/package.json'
+    'C:/projects/demo-app/package.json'
   ].join('\n\n');
   const tail = 'Conclusion: all checks passed. '.repeat(60);
   const text = `${head}\n\n${middle}\n\n${tail}`;
